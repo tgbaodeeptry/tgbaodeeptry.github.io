@@ -90,12 +90,7 @@ layout: page
     {% endif %}
 
     <script>
-      console.log("{{ post.url }}")
-    </script>
-
-    <script>
       function cb(response) {
-        console.log("{{post.title}}")
         count = response.value
 
         if (count == undefined) {
@@ -105,7 +100,7 @@ layout: page
         }
       }
     </script>
-    <script src="https://api.countapi.xyz/get/tgbao.me/{{post.url}}?callback=cb"></script>
+    <script src="https://api.countapi.xyz/get/tgbao.me{{post.url}}?callback=cb"></script>
 
    </article>
   {% endfor %}
