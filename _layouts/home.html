@@ -82,8 +82,30 @@ layout: page
       {% for tag in post.tags %}
       <a href="{{ '/tags' | absolute_url }}#{{- tag -}}">{{- tag -}}</a>
       {% endfor %}
+
+      <div style="float: right">
+      <a>View: <a id="view-{{ post.url }}"></a></a>
+      </div>
     </div>
     {% endif %}
+
+    <script>
+      console.log("{{ post.url }}")
+    </script>
+
+    <script>
+      function cb(response) {
+        console.log("{{post.title}}")
+        count = response.value
+
+        if (count == undefined) {
+          document.getElementById("view-{{ post.url }}").innerText = 0;
+        } else {
+          document.getElementById("view-{{ post.url }}").innerText = response.value;
+        }
+      }
+    </script>
+    <script src="https://api.countapi.xyz/get/tgbao.me/{{post.url}}?callback=cb"></script>
 
    </article>
   {% endfor %}
